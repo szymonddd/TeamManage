@@ -27,3 +27,32 @@ public class Player
         Console.WriteLine($"Wynik zawodnika {Name} został zaktualizowany. Aktualny wynik: {Score}.");
     }
 }
+public class Team
+{
+    private List<Player> players = new List<Player>();
+
+    public void AddPlayer(Player player)
+    {
+        if (player == null)
+        {
+            Console.WriteLine("Nie można dodać pustego zawodnika.");
+            return;
+        }
+
+        players.Add(player);
+        Console.WriteLine($"Zawodnik {player.Name} został dodany do drużyny.");
+    }
+
+    public void RemovePlayer(string playerName)
+    {
+        Player player = players.FirstOrDefault(p => p.Name == playerName);
+        if (player != null)
+        {
+            players.Remove(player);
+            Console.WriteLine($"Zawodnik {playerName} został usunięty z drużyny.");
+        }
+        else
+        {
+            Console.WriteLine($"Zawodnik {playerName} nie został znaleziony w drużynie.");
+        }
+    }
